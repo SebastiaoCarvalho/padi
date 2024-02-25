@@ -108,8 +108,8 @@ state B.
 We can split the sum into two parts, $\sum_{n=1}^{\infty} 2n / 2^n$ and $\sum_{n=1}^{\infty} 1 / 2^n$.
 
 For the first sum, if we take the 2 from the denominator, we get $\sum_{n=1}^{\infty} n / 2^{n-1}$, which is an Arithmetico-Geometric series.
-For an Arithmetico-Geometric series of the form $\sum_{n=1}^{\infty} nq^{n}$, the sum is given by $\frac{1}{(1 - q)^2}$, if $0 < q < 1$.
-With this, the first sum is $ 2 * \frac{1}{(1 - 1/2)^2} = 4$.
+For an Arithmetico-Geometric series of the form $\sum_{n=1}^{\infty} nq^{n}$, the sum is given by $\frac{q}{(1 - q)^2}$, if $0 < q < 1$.
+With this, the first sum is $ 2 * \frac{1/2}{(1 - 1/2)^2} = 2 * \frac{0.5}{0.25} = 4$.
 
 The second sum is a geometric series, with the sum given by $\frac{1}{1 - q}$, if $0 < q < 1$.
 With this, the second sum is $1$.
