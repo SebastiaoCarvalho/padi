@@ -76,6 +76,8 @@ The probability of the second path is $P(x_1=B|x_0=A) * P(x_2=C|x_1=B) * P(x_3=A
 Since the first path takes 2 steps and the second path takes 3 steps, 
 $T_{AA} = 0.5 * 2 + 0.5 * 3 = 2.5$.
 
+\bigskip
+
 For state B, we have 2 possible paths to reach state B again, $B \rightarrow A \rightarrow B$ and
 $B \rightarrow C \rightarrow A \rightarrow B$. With the transition matrix, we can calculate the probability of each path.
 
@@ -85,7 +87,9 @@ The probability of the second path is $P(x_1=C|x_0=B) * P(x_2=A|x_1=C) * P(x_3=B
 Since the first path takes 2 steps and the second path takes 3 steps,
 $T_{BB} = 0.5 * 2 + 0.5 * 3 = 2.5$.
 
-For state C, we have infinite possible paths to reach state C again, since it the bot can stay in states A and B indefinitely.
+\bigskip
+
+For state C, we have infinite possible paths to reach state C again, since the bot can stay transitioning bwtween states A and B indefinitely.
 
 The shortest path is $C \rightarrow A \rightarrow B \rightarrow C$, with 3 steps.
 The probability of this path is $P(x_1=A|x_0=C) * P(x_2=B|x_1=A) * P(x_3=C|x_2=B) = 1 * 0.5 * 1 = 0.5$.
@@ -95,14 +99,24 @@ The probability of this path is $P(x_1=A|x_0=C) * P(x_2=B|x_1=A) * P(x_3=A|x_2=B
 = 1 * 1 * 0.5 * 1 * 0.5 = 0.25$.
 
 
-To calculate the average number of steps, we need to calculate $\sum_{n=1}^{\infty} (2n + 1) / 2^n = 5$. % TODO : Explain the sum
-
-Where 2n + 1 is the number of steps and 1/2n is the probability of the path. n represents the number of times we arrive at 
+To calculate the average number of steps, we need to calculate $\sum_{n=1}^{\infty} (2n + 1) / 2^n$, 
+where 2n + 1 is the number of steps and 1/2n is the probability of the path. n represents the number of times we arrive at 
 state B.
 
-With this, $T_{CC} = 5$.
+\bigskip
 
+We can split the sum into two parts, $\sum_{n=1}^{\infty} 2n / 2^n$ and $\sum_{n=1}^{\infty} 1 / 2^n$.
 
+For the first sum, if we take the 2 from the denominator, we get $\sum_{n=1}^{\infty} n / 2^{n-1}$, which is an Arithmetico-Geometric series.
+For an Arithmetico-Geometric series of the form $\sum_{n=1}^{\infty} nq^{n}$, the sum is given by $\frac{1}{(1 - q)^2}$, if $0 < q < 1$.
+With this, the first sum is $ 2 * \frac{1}{(1 - 1/2)^2} = 4$.
+
+The second sum is a geometric series, with the sum given by $\frac{1}{1 - q}$, if $0 < q < 1$.
+With this, the second sum is $1$.
+
+\bigskip
+
+With this, the sum of the 2 series is $4 + 1 = 5$, and $T_{CC} = 5$.
 
 \subsection{}
 
