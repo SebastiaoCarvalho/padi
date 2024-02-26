@@ -20,7 +20,7 @@
 
 \subsection{}
 
-Using $\mathbb{X}$ as the state space, $\mathbb{X} = \{ A, B, C\}$.
+Using $\mathcal{X}$ as the state space, $\mathcal{X} = \{ A, B, C\}$.
 
 \bigskip
 
@@ -107,12 +107,12 @@ state B.
 
 We can split the sum into two parts, $\sum_{n=1}^{\infty} 2n / 2^n$ and $\sum_{n=1}^{\infty} 1 / 2^n$.
 
-For the first sum, if we take the 2 from the denominator, we get $\sum_{n=1}^{\infty} n / 2^{n-1}$, which is an Arithmetico-Geometric series.
+For the first sum, if we take the 2 from the denominator, we get $\sum_{n=1}^{\infty} n / 2^{n}$, which is an Arithmetico-Geometric series.
 For an Arithmetico-Geometric series of the form $\sum_{n=1}^{\infty} nq^{n}$, the sum is given by $\frac{q}{(1 - q)^2}$, if $0 < q < 1$.
 With this, the first sum is $ 2 * \frac{1/2}{(1 - 1/2)^2} = 2 * \frac{0.5}{0.25} = 4$.
 
-The second sum is a geometric series, with the sum given by $\frac{1}{1 - q}$, if $0 < q < 1$.
-With this, the second sum is $1$.
+The second sum is a geometric series, with the sum given by $\frac{1}{1 - q} - 1$, if $0 < q < 1$.
+With this, the second sum is $\frac{1}{1 - 1/2} - 1 = 2 - 1 = 1$.
 
 \bigskip
 
@@ -140,15 +140,17 @@ $\mu = \begin{bmatrix} \mu_{a} & \mu_{b} & \mu_{c} \end{bmatrix} / (\mu_{a} + \m
 
 \bigskip
 
-For this distribution to be an invariant of the chain, then $\mu_{x} > 0 : x \in \mathbb{X}$ such that $\sum_{x \in \mathbb{X}} \mu_{x} = 1$, and $\mu_{x} = \mu_{x}P$, that is $\mu_{x} = \sum_{y \in \mathbb{X}} \mu_{y}P(x | y)$ for all $x \in \mathbb{X}$.
+For this distribution to be an invariant of the chain, then $\mu_{x} > 0 : x \in \mathcal{X}$ such that 
+$\sum_{x \in \mathcal{X}} \mu_{x} = 1$, and $\mu_{x} = \mu_{x}P$, that is $\mu_{x} = \sum_{y \in \mathcal{X}} \mu_{y}P(x | y)$ 
+for all $x \in \mathcal{X}$.
 The first condition is trivial to verify, all probabilities are higher than 0.
 From the second third condition we get:
 
 \begin{equation}
     \left\{\begin{array}{@{}l@{}}
-        \mu_{a} = \sum_{y \in \mathbb{X}} \mu_{y}P(a | y)\\
-        \mu_{b} = \sum_{y \in \mathbb{X}} \mu_{y}P(b | y)\\
-        \mu_{c} = \sum_{y \in \mathbb{X}} \mu_{y}P(c | y)\\
+        \mu_{a} = \sum_{y \in \mathcal{X}} \mu_{y}P(a | y)\\
+        \mu_{b} = \sum_{y \in \mathcal{X}} \mu_{y}P(b | y)\\
+        \mu_{c} = \sum_{y \in \mathcal{X}} \mu_{y}P(c | y)\\
         \mu_{a} + \mu_{b} + \mu_{c} = 1\\
     \end{array}\right.\notag
     \Leftrightarrow
