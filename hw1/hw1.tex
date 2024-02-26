@@ -6,7 +6,7 @@
 \usetikzlibrary{shapes,arrows,positioning}
 \renewcommand{\thesubsection}{\thesection \space \alph{subsection})}
 
-\title{Planing, Learning and Intelligent Decision Making - Homework 2}
+\title{Planing, Learning and Intelligent Decision Making - Homework 1}
 \author{99326 - Sebastião Carvalho, 99331 - Tiago Antunes}
 \date{\today}
 
@@ -20,7 +20,7 @@
 
 \subsection{}
 
-Using $\mathcal{X}$ as the state space, $\mathcal{X} = \{ A, B, C\}$.
+Using $\mathcal{X}$ as the state space, $\mathcal{X} = \{ A, B, C\}$, where each state represents its corresponding document.
 
 \bigskip
 
@@ -47,8 +47,8 @@ The diagram of the Markov chain is given by
     \begin{tikzpicture}[->,>= stealth',shorten >=2pt, line width =0.5 pt ,
 node distance=2 cm]
         \node [circle, draw] (A) at (0,0) {A};
-        \node [circle, draw] (B) at (-1, -2) {B};
-        \node [circle, draw] (C) at (1, -2) {C};
+        \node [circle, draw] (B) at (-1, -1.6) {B};
+        \node [circle, draw] (C) at (1, -1.6) {C};
         \path (A) edge [bend left] node [right] {$1$} (B);
         \path (B) edge [bend left] node [left] {$0.5$} (A);
         \path (B) edge [bend right] node [above] {$0.5$} (C);
