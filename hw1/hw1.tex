@@ -24,7 +24,7 @@ Using $\mathcal{X}$ as the state space, $\mathcal{X} = \{ A, B, C\}$.
 
 \bigskip
 
-The transition matrix is given by
+The transition matrix, $P$, is given by
 $
 \begin{bmatrix}
     0 & 1 & 0 \\
@@ -89,7 +89,7 @@ $T_{BB} = 0.5 * 2 + 0.5 * 3 = 2.5$.
 
 \bigskip
 
-For state C, we have infinite possible paths to reach state C again, since the bot can stay transitioning bwtween states A and B indefinitely.
+For state C, we have infinite possible paths to reach state C again, since the bot can stay transitioning between states A and B indefinitely.
 
 The shortest path is $C \rightarrow A \rightarrow B \rightarrow C$, with 3 steps.
 The probability of this path is $P(x_1=A|x_0=C) * P(x_2=B|x_1=A) * P(x_3=C|x_2=B) = 1 * 0.5 * 1 = 0.5$.
@@ -100,7 +100,7 @@ The probability of this path is $P(x_1=A|x_0=C) * P(x_2=B|x_1=A) * P(x_3=A|x_2=B
 
 
 To calculate the average number of steps, we need to calculate $\sum_{n=1}^{\infty} (2n + 1) / 2^n$, 
-where 2n + 1 is the number of steps and 1/2n is the probability of the path. n represents the number of times we arrive at 
+where $2n + 1$ is the number of steps and $1/2^n$ is the probability of the path. n represents the number of times we arrive at 
 state B.
 
 \bigskip
@@ -120,15 +120,15 @@ With this, the sum of the 2 series is $4 + 1 = 5$, and $T_{CC} = 5$.
 
 \subsection{}
 
-Knowing that $\mu_{x}$ is inversely proportional to $T_{xx}$ we can calculate $\mu_{x}$ for each of the states with the results from above.
+Knowing that $\mu_{x}$ is inversely proportional to $T_{xx}$, we can calculate $\mu_{x}$ for each of the states with the results from above.
 
 \bigskip
 
-$\mu_{a} = 1 / T_{aa} = 1 / 2.5 = 2 / 5 = 0.4$
+$\mu_{A} = 1 / T_{AA} = 1 / 2.5 = 2 / 5 = 0.4$
 
-$\mu_{b} = 1 / T_{bb} = 1 / 2.5 = 2 / 5 = 0.4$
+$\mu_{B} = 1 / T_{BB} = 1 / 2.5 = 2 / 5 = 0.4$
 
-$\mu_{c} = 1 / T_{cc} = 1 / 5 = 0.2$
+$\mu_{C} = 1 / T_{CC} = 1 / 5 = 0.2$
 
 \bigskip
 
@@ -136,65 +136,65 @@ To get the distribution $\mu$ we must normalize the values calculated previously
 
 \bigskip
 
-$\mu = \begin{bmatrix} \mu_{a} & \mu_{b} & \mu_{c} \end{bmatrix} / (\mu_{a} + \mu_{b} + \mu_{c}) = \begin{bmatrix} 0.4 & 0.4 & 0.2 \end{bmatrix} / 1 = \begin{bmatrix} 0.4 & 0.4 & 0.2 \end{bmatrix}$
+$\mu = \begin{bmatrix} \mu_{A} & \mu_{B} & \mu_{C} \end{bmatrix} / (\mu_{A} + \mu_{B} + \mu_{C}) = \begin{bmatrix} 0.4 & 0.4 & 0.2 \end{bmatrix} / 1 = \begin{bmatrix} 0.4 & 0.4 & 0.2 \end{bmatrix}$
 
 \bigskip
 
-For this distribution to be an invariant of the chain, then $\mu_{x} > 0 : x \in \mathcal{X}$ such that 
+For this distribution to be an invariant of the chain then $\mu_{x} > 0 : x \in \mathcal{X}$, such that 
 $\sum_{x \in \mathcal{X}} \mu_{x} = 1$, and $\mu_{x} = \mu_{x}P$, that is $\mu_{x} = \sum_{y \in \mathcal{X}} \mu_{y}P(x | y)$ 
 for all $x \in \mathcal{X}$.
 The first condition is trivial to verify, all probabilities are higher than 0.
-From the second third condition we get:
+From the second and third conditions we get:
 
 \begin{equation}
     \left\{\begin{array}{@{}l@{}}
-        \mu_{a} = \sum_{y \in \mathcal{X}} \mu_{y}P(a | y)\\
-        \mu_{b} = \sum_{y \in \mathcal{X}} \mu_{y}P(b | y)\\
-        \mu_{c} = \sum_{y \in \mathcal{X}} \mu_{y}P(c | y)\\
-        \mu_{a} + \mu_{b} + \mu_{c} = 1\\
+        \mu_{A} = \sum_{y \in \mathcal{X}} \mu_{y}P(A | y)\\
+        \mu_{B} = \sum_{y \in \mathcal{X}} \mu_{y}P(B | y)\\
+        \mu_{C} = \sum_{y \in \mathcal{X}} \mu_{y}P(C | y)\\
+        \mu_{A} + \mu_{B} + \mu_{C} = 1\\
     \end{array}\right.\notag
     \Leftrightarrow
     \left\{\begin{array}{@{}l@{}}
-        \mu_{a} = \mu_{a} * 0 + \mu_{b} * 0.5 + \mu_{c} * 1\\
-        \mu_{b} = \mu_{a} * 1 + \mu_{b} * 0 + \mu_{c} * 0\\
-        \mu_{c} = \mu_{a} * 0 + \mu_{b} * 0.5 + \mu_{c} * 0\\
-        \mu_{a} + \mu_{b} + \mu_{c} = 1\\
+        \mu_{A} = \mu_{A} * 0 + \mu_{B} * 0.5 + \mu_{C} * 1\\
+        \mu_{B} = \mu_{A} * 1 + \mu_{B} * 0 + \mu_{C} * 0\\
+        \mu_{C} = \mu_{A} * 0 + \mu_{B} * 0.5 + \mu_{C} * 0\\
+        \mu_{A} + \mu_{B} + \mu_{C} = 1\\
     \end{array}\right.
     \Leftrightarrow
     \left\{\begin{array}{@{}l@{}}
-        \mu_{a} = 0.5\mu_{b} + \mu_{c}\\
-        \mu_{b} = \mu_{a}\\
-        \mu_{c} = 0.5\mu_{b}\\
-        \mu_{a} + \mu_{b} + \mu_{c} = 1\\
+        \mu_{A} = 0.5\mu_{B} + \mu_{C}\\
+        \mu_{B} = \mu_{A}\\
+        \mu_{C} = 0.5\mu_{B}\\
+        \mu_{A} + \mu_{B} + \mu_{C} = 1\\
     \end{array}\right.
 \end{equation}
 
 \begin{equation}
     \Leftrightarrow
     \left\{\begin{array}{@{}l@{}}
-        \mu_{b} = 2\mu_{c}\\
-        \mu_{b} = \mu_{a}\\
-        \mu_{c} = 0.5\mu_{b}\\
-        \mu_{a} + \mu_{b} + \mu_{c} = 1\\
+        \mu_{B} = 2\mu_{C}\\
+        \mu_{B} = \mu_{A}\\
+        \mu_{C} = 0.5\mu_{B}\\
+        \mu_{A} + \mu_{B} + \mu_{C} = 1\\
     \end{array}\right.\notag
     \Leftrightarrow
     \left\{\begin{array}{@{}l@{}}
-        \mu_{b} = 2\mu_{c}\\
-        \mu_{b} = \mu_{a}\\
-        \mu_{c} = 0.5\mu_{b}\\
-        2\mu_{c} + 2\mu_{c} + \mu_{c} = 1\\
+        \mu_{B} = 2\mu_{C}\\
+        \mu_{B} = \mu_{A}\\
+        \mu_{C} = 0.5\mu_{B}\\
+        2\mu_{C} + 2\mu_{C} + \mu_{C} = 1\\
     \end{array}\right.
     \Leftrightarrow
     \left\{\begin{array}{@{}l@{}}
-        \mu_{b} = 2/5\\
-        \mu_{a} = 2/5\\
-        \mu_{c} = 1/5\\
-        \mu_{c} = 1/5\\
+        \mu_{B} = 2/5\\
+        \mu_{A} = 2/5\\
+        \mu_{C} = 1/5\\
+        \mu_{C} = 1/5\\
     \end{array}\right.
 \end{equation}
 
 \bigskip
 
-Which gives us the row vector $\begin{bmatrix} 0.4 & 0.4 & 0.2 \end{bmatrix}$, equal to the distribution obtained above thus proving that the distribution $\mu$ is invariant of the chain.
+Which gives us the row vector $\begin{bmatrix} 0.4 & 0.4 & 0.2 \end{bmatrix}$, equal to the distribution obtained above, thus proving that the distribution $\mu$ is invariant of the chain.
 
 \end{document}
