@@ -4,7 +4,7 @@ This repository contains work developed in the Planning, Learning and Intelligen
 
 Authors | Github Profile
 --------|--------
-Tiago Antunes | https://github.com/SebastiaoCarvalho
-Sebastião Carvalho  | https://github.com/fallenatlas
+Sebastião Carvalho | https://github.com/SebastiaoCarvalho
+Tiago Antunes  | https://github.com/fallenatlas
 
 ## Lab 1 - Markov Chains
