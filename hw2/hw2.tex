@@ -1,0 +1,75 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,positioning}
+\renewcommand{\thesubsection}{\thesection \space \alph{subsection})}
+
+\title{Planing, Learning and Intelligent Decision Making - Homework 2}
+\author{99326 - Sebastião Carvalho, 99331 - Tiago Antunes}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\section{Question 1}
+
+\subsection{}
+
+Considering $\mathcal{X}$ as our state space, $\mathcal{X} = \{1P, 2P, 2NP, 3P, 3NP, 4P, 4NP\}$, 
+where each state represents the corresponding cell and if they have the passanger or not (P or NP). 
+Since when we are on the first cell we always have the passanger, state we dont consider $1NP$.
+
+Considering $\mathcal{A}$ as our action space, $\mathcal{A} = \{U, D, L, R\}$, 
+where each action represents the movement of the agent, up, down, left and right, respectively.
+
+\subsection{}
+
+The transition matrix for the action down, $P_D$, is given by
+$\begin{bmatrix}
+    0.2 & 0 & 0 & 0.8 & 0 & 0 & 0 \\
+    0 & 0 & 0.2 & 0 & 0 & 0 & 0.8 \\
+    0 & 0.2 & 0 & 0 & 0 & 0.8 & 0 \\
+    0.4 & 0 & 0 & 0.2 & 0 & 0.4 & 0 \\
+    0.4 & 0 & 0 & 0 & 0.2 & 0 & 0.4 \\
+    0 & 0.4 & 0 & 0.4 & 0 & 0.2 & 0 \\
+    0 & 0 & 0.4 & 0 & 0.4 & 0 & 0.2 \\
+\end{bmatrix}$
+
+\medskip
+
+, where each row represents the state we are in and each column represents the state we are going to.
+
+\bigskip
+
+Since we want a simple cost function, we'll consider that the movement to each state costs 1,
+and the movement to the goal state ($2P$) costs 0. So, the cost matrix for all actions is given by
+$\begin{bmatrix}
+    1 & 1 & 1 & 1 \\
+    1 & 1 & 1 & 1 \\
+    0 & 1 & 0 & 0 \\
+    1 & 1 & 1 & 1 \\
+    1 & 1 & 1 & 1 \\
+    0 & 1 & 1 & 1 \\
+    1 & 1 & 1 & 1 \\
+\end{bmatrix}$
+
+\medskip
+
+, where each row represents the state we are in and each column represents the action we are taking.
+
+\medskip
+
+Basically, $c(x, a) = \left\{\begin{array}{ll}
+    0 & \text{if } (x, a) = (4P, U), (2P, U), (2P, R), (2P, L) \\
+    1 & \text{else}
+\end{array}
+\right.$
+
+\subsection{}
+
+\end{document}
