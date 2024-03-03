@@ -72,4 +72,202 @@ Basically, $c(x, a) = \left\{\begin{array}{ll}
 
 \subsection{}
 
+Let policy, $\pi$, be the policy in which the taxi driver always goes down. In this case there's only one action the taxi can do, action 'D',
+therefor the policy matrix can be represented by: 
+
+\begin{equation}
+    \notag
+    \pi = \begin{bmatrix}
+        0 & 1 & 0 & 0 \\
+        0 & 1 & 0 & 0 \\
+        0 & 1 & 0 & 0 \\
+        0 & 1 & 0 & 0 \\
+        0 & 1 & 0 & 0 \\
+        0 & 1 & 0 & 0 \\
+        0 & 1 & 0 & 0 \\
+    \end{bmatrix}
+\end{equation}
+
+The policy is Markov and stationary, since the distribution over action given the history depends only on the last state and
+doesn't change through time. \\
+
+Because the policy is stationary, the cost-to-go function associated with it, verifies:
+\begin{equation}
+    \notag
+    J^\pi = c_\pi + {\gamma}P_{\pi}J^{\pi}
+\end{equation}
+
+Solving the system, we get:
+\begin{equation}
+    \notag
+    J^\pi = {(I - {\gamma}P_{\pi})^{-1}}c_\pi
+\end{equation}
+
+\medskip
+
+The cost matrix for the policy $\pi$ can be obtained by multiplying each value of a column, by each value of the column of the cost matrix, for the same action.
+In other words, the probability of doing an action in a state by the cost of the action in that state, and then summing the matrices corresponding results for each action.
+Since here all columns are zeros, except the column corresponding to action 'D', we only need to calculate for action D, and $c_{\pi}$ will be equal to the column corresponding to 'D' on the cost matrix, as verified by result:
+
+\begin{equation}
+    \notag
+    c_{\pi} = diag(\pi(D|\cdot))C(D|\cdot)
+    \begin{bmatrix}
+        1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+        0 & 1 & 0 & 0 & 0 & 0 & 0 \\
+        0 & 0 & 1 & 0 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 1 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0 & 1 & 0 & 0 \\
+        0 & 0 & 0 & 0 & 0 & 1 & 0 \\
+        0 & 0 & 0 & 0 & 0 & 0 & 1 \\
+    \end{bmatrix}
+    \begin{bmatrix}
+        1 \\
+        1 \\
+        1 \\
+        1 \\
+        1 \\
+        1 \\
+        1 \\
+    \end{bmatrix}
+    = 
+    \begin{bmatrix}
+        1 \\
+        1 \\
+        1 \\
+        1 \\
+        1 \\
+        1 \\
+        1 \\
+    \end{bmatrix}
+\end{equation}
+
+\bigskip
+
+Now we will calculate the matrix $P_{\pi}$.
+This matrix is obtained by multiplying each value of a column by each row of the transition probability matrix of the action the column corresponds to.
+In other words, the probability of doing an action in a state by the transition probabilities of that state, and then summing the matrices corresponding results for each action.
+Since here all columns are zeros, except the column corresponding to action 'D', we only need to calculate for action D, and $P_{\pi}$ will be equal to $P_{D}$ as verified by result:
+
+\begin{equation}
+    \notag
+    P_{\pi} = diag(\pi(D|\cdot))P_{D} = 
+    \begin{bmatrix}
+        1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+        0 & 1 & 0 & 0 & 0 & 0 & 0 \\
+        0 & 0 & 1 & 0 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 1 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0 & 1 & 0 & 0 \\
+        0 & 0 & 0 & 0 & 0 & 1 & 0 \\
+        0 & 0 & 0 & 0 & 0 & 0 & 1 \\
+    \end{bmatrix}
+    \begin{bmatrix}
+        0.2 & 0 & 0 & 0.8 & 0 & 0 & 0 \\
+        0 & 0.2 & 0 & 0 & 0 & 0.8 & 0 \\
+        0 & 0 & 0.2 & 0 & 0 & 0 & 0.8 \\
+        0 & 0 & 0 & 1 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0 & 1 & 0 & 0 \\
+        0 & 0 & 0 & 0 & 0 & 1 & 0 \\
+        0 & 0 & 0 & 0 & 0 & 0 & 1 \\
+    \end{bmatrix}
+\end{equation}
+
+\begin{equation}
+    \notag
+    =
+    \begin{bmatrix}
+        0.2 & 0 & 0 & 0.8 & 0 & 0 & 0 \\
+        0 & 0.2 & 0 & 0 & 0 & 0.8 & 0 \\
+        0 & 0 & 0.2 & 0 & 0 & 0 & 0.8 \\
+        0 & 0 & 0 & 1 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0 & 1 & 0 & 0 \\
+        0 & 0 & 0 & 0 & 0 & 1 & 0 \\
+        0 & 0 & 0 & 0 & 0 & 0 & 1 \\
+    \end{bmatrix}
+\end{equation}
+\medskip
+
+Now, we have everything we need to calculate $J_{\pi}$. Considering $\gamma = 0.9$ we have:
+
+\begin{equation}
+    \notag
+    J^\pi = \left(
+    \begin{bmatrix}
+        1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+        0 & 1 & 0 & 0 & 0 & 0 & 0 \\
+        0 & 0 & 1 & 0 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 1 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0 & 1 & 0 & 0 \\
+        0 & 0 & 0 & 0 & 0 & 1 & 0 \\
+        0 & 0 & 0 & 0 & 0 & 0 & 1 \\
+    \end{bmatrix} - 0.9
+    \begin{bmatrix}
+        0.2 & 0 & 0 & 0.8 & 0 & 0 & 0 \\
+        0 & 0.2 & 0 & 0 & 0 & 0.8 & 0 \\
+        0 & 0 & 0.2 & 0 & 0 & 0 & 0.8 \\
+        0 & 0 & 0 & 1 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0 & 1 & 0 & 0 \\
+        0 & 0 & 0 & 0 & 0 & 1 & 0 \\
+        0 & 0 & 0 & 0 & 0 & 0 & 1 \\
+    \end{bmatrix}\right)^{-1}
+    \begin{bmatrix}
+        1 \\
+        1 \\
+        1 \\
+        1 \\
+        1 \\
+        1 \\
+        1 \\
+    \end{bmatrix}
+\end{equation}
+
+\begin{equation}
+    \notag
+    = 
+    \begin{bmatrix}
+        1.22 & 0 & 0 & 8.78 & 0 & 0 & 0 \\ 
+        0 & 1.22 & 0 & 0 & 0 & 8.78 & 0 \\ 
+        0 & 0 & 1.22 & 0 & 0 & 0 & 8.78 \\
+        0 & 0 & 0 & 10 & 0 & 0 & 0 \\  
+        0 & 0 & 0 & 0 & 10 & 0 & 0 \\ 
+        0 & 0 & 0 & 0 & 0 & 10 & 0 \\  
+        0 & 0.& 0 & 0 & 0 & 0 & 10 \\
+    \end{bmatrix}
+    \begin{bmatrix}
+        1 \\
+        1 \\
+        1 \\
+        1 \\
+        1 \\
+        1 \\
+        1 \\
+    \end{bmatrix} = 
+    \begin{bmatrix}
+        10 \\
+        10 \\
+        10 \\
+        10 \\
+        10 \\
+        10 \\
+        10 \\
+    \end{bmatrix}
+\end{equation}
+
+\medskip
+
+So, the cost-to-go function associated with policy $\pi$, using $\gamma = 0.9$, is: 
+
+\begin{equation}
+    J^\pi = 
+    \begin{bmatrix}
+        10 \\
+        10 \\
+        10 \\
+        10 \\
+        10 \\
+        10 \\
+        10 \\
+    \end{bmatrix}
+\end{equation}
+
 \end{document}
