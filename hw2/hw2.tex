@@ -127,7 +127,7 @@ Since here all columns in $\pi$ are zeros, except the column corresponding to ac
     \end{bmatrix}
     \begin{bmatrix}
         1 \\
-        1 \\
+        0 \\
         1 \\
         1 \\
         1 \\
@@ -137,7 +137,7 @@ Since here all columns in $\pi$ are zeros, except the column corresponding to ac
     = 
     \begin{bmatrix}
         1 \\
-        1 \\
+        0 \\
         1 \\
         1 \\
         1 \\
@@ -217,7 +217,7 @@ Now, we have everything we need to calculate $J_{\pi}$. Considering $\gamma = 0.
     \end{bmatrix}\right)^{-1}
     \begin{bmatrix}
         1 \\
-        1 \\
+        0 \\
         1 \\
         1 \\
         1 \\
@@ -240,7 +240,7 @@ Now, we have everything we need to calculate $J_{\pi}$. Considering $\gamma = 0.
     \end{bmatrix}
     \begin{bmatrix}
         1 \\
-        1 \\
+        0 \\
         1 \\
         1 \\
         1 \\
@@ -249,7 +249,7 @@ Now, we have everything we need to calculate $J_{\pi}$. Considering $\gamma = 0.
     \end{bmatrix} = 
     \begin{bmatrix}
         10 \\
-        10 \\
+        8.78 \\
         10 \\
         10 \\
         10 \\
@@ -265,15 +265,16 @@ So, the cost-to-go function associated with policy $\pi$, using $\gamma = 0.9$, 
 \begin{equation}
     \notag
     J^\pi = 
-    \begin{bmatrix}
-        10 \\
-        10 \\
-        10 \\
-        10 \\
-        10 \\
-        10 \\
-        10 \\
-    \end{bmatrix}
+    \kbordermatrix{
+    & \\
+    1P & 10 \\
+    2P & 8.78 \\
+    2NP & 10 \\
+    3P & 10 \\
+    3NP & 10 \\
+    4P & 10 \\
+    4NP & 10 \\
+    }
 \end{equation}
 
 \end{document}
