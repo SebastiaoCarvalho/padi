@@ -1,10 +1,13 @@
 \documentclass{article}
 
 \usepackage{amsmath}
+\usepackage{kbordermatrix}% https://kcborder.caltech.edu/TeX/kbordermatrix.sty
 \usepackage{amssymb}
 \usepackage{tikz}
 \usetikzlibrary{shapes,arrows,positioning}
 \renewcommand{\thesubsection}{\thesection \space \alph{subsection})}
+\renewcommand{\kbldelim}{[}% Left delimiter
+\renewcommand{\kbrdelim}{]}% Right delimiter
 
 \title{Planing, Learning and Intelligent Decision Making - Homework 2}
 \author{99326 - Sebastião Carvalho, 99331 - Tiago Antunes}
@@ -22,7 +25,7 @@
 
 Considering $\mathcal{X}$ as our state space, $\mathcal{X} = \{1P, 2P, 2NP, 3P, 3NP, 4P, 4NP\}$, 
 where each state represents the corresponding cell and if they have the passanger or not (P or NP). 
-Since when we are on the first cell we always have the passanger, state we dont consider $1NP$.
+Since when we are on the first cell we always have the passanger, we dont consider state $1NP$.
 
 Considering $\mathcal{A}$ as our action space, $\mathcal{A} = \{U, D, L, R\}$, 
 where each action represents the movement of the agent, up, down, left and right, respectively.
@@ -30,42 +33,44 @@ where each action represents the movement of the agent, up, down, left and right
 \subsection{}
 
 The transition matrix for the action down, $P_D$, is given by
-$\begin{bmatrix}
-    0.2 & 0 & 0 & 0.8 & 0 & 0 & 0 \\
-    0 & 0.2 & 0 & 0 & 0 & 0.8 & 0 \\
-    0 & 0 & 0.2 & 0 & 0 & 0 & 0.8 \\
-    0 & 0 & 0 & 1 & 0 & 0 & 0 \\
-    0 & 0 & 0 & 0 & 1 & 0 & 0 \\
-    0 & 0 & 0 & 0 & 0 & 1 & 0 \\
-    0 & 0 & 0 & 0 & 0 & 0 & 1 \\
-\end{bmatrix}$
+$
+    \kbordermatrix{
+    & 1P & 2P & 2NP & 3P & 3NP & 4P & 4NP \\
+    1P & 0.2 & 0 & 0 & 0.8 & 0 & 0 & 0 \\
+    2P & 0 & 0.2 & 0 & 0 & 0 & 0.8 & 0 \\
+    2NP & 0 & 0 & 0.2 & 0 & 0 & 0 & 0.8 \\
+    3P & 0 & 0 & 0 & 1 & 0 & 0 & 0 \\
+    3NP & 0 & 0 & 0 & 0 & 1 & 0 & 0 \\
+    4P & 0 & 0 & 0 & 0 & 0 & 1 & 0 \\
+    4NP & 0 & 0 & 0 & 0 & 0 & 0 & 1 \\
+  }
+$
+
+\newpage
+
+Since we want a simple cost function, we'll consider that the cost for every action is 1, 
+except for the actions from the goal state, which will have a cost of 0.
 
 \medskip
 
-, where each row represents the state we are in and each column represents the state we are going to.
-
-\bigskip
-
-Since we want a simple cost function, we'll consider that the movement to each state costs 1,
-and the movement to the goal state ($2P$) costs 0. So, the cost matrix for all actions is given by
-$\begin{bmatrix}
-    1 & 1 & 1 & 1 \\
-    1 & 1 & 1 & 1 \\
-    0 & 1 & 0 & 0 \\
-    1 & 1 & 1 & 1 \\
-    1 & 1 & 1 & 1 \\
-    0 & 1 & 1 & 1 \\
-    1 & 1 & 1 & 1 \\
-\end{bmatrix}$
-
-\medskip
-
-, where each row represents the state we are in and each column represents the action we are taking.
+So, the cost matrix for all actions is given by 
+$
+  c = \kbordermatrix{
+    & U & D & L & R \\
+    1P & 1 & 1 & 1 & 1 \\
+    2P & 0 & 0 & 0 & 0 \\
+    2NP & 1 & 1 & 1 & 1 \\
+    3P & 1 & 1 & 1 & 1 \\
+    3NP & 1 & 1 & 1 & 1 \\
+    4P & 1 & 1 & 1 & 1 \\
+    4NP & 1 & 1 & 1 & 1 \\
+  }
+$
 
 \medskip
 
 Basically, $c(x, a) = \left\{\begin{array}{ll}
-    0 & \text{if } (x, a) = (4P, U), (2P, U), (2P, R), (2P, L) \\
+    0 & \text{if } x = 2P \\
     1 & \text{else}
 \end{array}
 \right.$
