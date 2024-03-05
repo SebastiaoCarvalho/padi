@@ -11,7 +11,7 @@ Pd = np.array([[0.2, 0, 0, 0.8, 0, 0, 0],
     [0, 0, 0, 0, 0, 1, 0],
     [0, 0, 0, 0, 0, 0, 1]])
 P = (Pd)
-c = np.array([[1], [1], [1], [1], [1], [1], [1]])
+c = np.array([[1], [2], [1], [1], [1], [1], [1]])
 
 #X = {'0', 'A', 'B'}
 #A = {'a', 'b'}
@@ -57,6 +57,26 @@ J = value_iteration(M, 1e-8)
 Inverse = np.linalg.inv(np.identity(7) - 0.9 * Pd)
 
 print(np.round(Inverse, 3))
+
+cc = [[1, 0, 0, 0, 0, 0, 0],
+    [0, 1, 0, 0, 0, 0, 0],
+    [0, 0, 1, 0, 0, 0, 0],
+    [0, 0, 0, 1, 0, 0, 0],
+    [0, 0, 0, 0, 1, 0, 0],
+    [0, 0, 0, 0, 0, 1, 0],
+    [0, 0, 0, 0, 0, 0, 1]]
+
+print("bruh")
+#empty = np.zeros((7, 7))
+#np.fill_diagonal(empty, c)
+#print(empty @ Pd)
+print(c * Pd)
+print("bruh")
+
+c_pi_sum = np.array([[0.5, 0.25], [0, 0], [0, 1]])
+
+print(np.sum(c_pi_sum, axis=1, keepdims=True))
+print("bruh")
 
 print(Inverse @ c)
 

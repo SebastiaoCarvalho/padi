@@ -105,9 +105,8 @@ Solving the system, we get:
 
 \medskip
 
-The cost matrix for the policy $\pi$ can be obtained by multiplying each value of a column, by each value of the column of the cost matrix, for the same action.
-In other words, the probability of doing an action in a state by the cost of the action in that state, and then summing the matrices corresponding results for each action.
-Since here all columns are zeros, except the column corresponding to action 'D', we only need to calculate for action D, and $c_{\pi}$ will be equal to the column corresponding to 'D' on the cost matrix, as verified by result:
+The cost matrix for the policy $\pi$ can be obtained by multiplying the policy matrix with the immediate cost matrix value by value, and then summing the values in each row.
+Since here all columns in $\pi$ are zeros, except the column corresponding to action 'D', we only need to calculate for that action, since all else will simply be 0. Here we put the column corresponding to action 'D' in the policy matrix in a diagonal and multiply both matrices to get the result.
 
 \begin{equation}
     \notag
@@ -147,7 +146,8 @@ Since here all columns are zeros, except the column corresponding to action 'D',
 Now we will calculate the matrix $P_{\pi}$.
 This matrix is obtained by multiplying each value of a column by each row of the transition probability matrix of the action the column corresponds to.
 In other words, the probability of doing an action in a state by the transition probabilities of that state, and then summing the matrices corresponding results for each action.
-Since here all columns are zeros, except the column corresponding to action 'D', we only need to calculate for action D, and $P_{\pi}$ will be equal to $P_{D}$ as verified by result:
+Since here all columns in $\pi$ are zeros, except the column corresponding to action 'D', we only need to calculate for that action, since all else will simply be 0.
+Here, once again, we put the column corresponding to action 'D' in the policy matrix in a diagonal and multiply both matrices to get the result.
 
 \begin{equation}
     \notag
@@ -258,6 +258,7 @@ Now, we have everything we need to calculate $J_{\pi}$. Considering $\gamma = 0.
 So, the cost-to-go function associated with policy $\pi$, using $\gamma = 0.9$, is: 
 
 \begin{equation}
+    \notag
     J^\pi = 
     \begin{bmatrix}
         10 \\
