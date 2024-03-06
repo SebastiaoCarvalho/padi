@@ -8,7 +8,7 @@ zip=$name.zip
 
 # Create a zip file
 cp $folder/$pdf .
-cp $folder/*.py .
+cp $folder/padi*.py .
 
 # Zip the folder
 zip $zip $pdf *.py
