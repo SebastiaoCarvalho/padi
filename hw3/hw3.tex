@@ -1,0 +1,148 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{kbordermatrix}% https://kcborder.caltech.edu/TeX/kbordermatrix.sty
+\usepackage{amssymb}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,positioning}
+\renewcommand{\thesubsection}{\thesection \space \alph{subsection})}
+\renewcommand{\kbldelim}{[}% Left delimiter
+\renewcommand{\kbrdelim}{]}% Right delimiter
+
+\title{Planing, Learning and Intelligent Decision Making - Homework 3}
+\author{99326 - Sebastião Carvalho, 99331 - Tiago Antunes}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\section{Question 1}
+
+\subsection{}
+
+Considering $\mathcal{X}$ as our state space, $\mathcal{X} = \{1, 2a, 2b, 3, 4\}$,
+corresponding to each of the nodes of the graph.\\
+
+Our action space is $\mathcal{A} = \{a, b, c\}$.\\
+
+Since the observation at each step is the number in the state designation, 
+our action space will be, $\mathcal{Z} = \{1, 2, 3, 4\}$,
+
+\subsection{}
+
+The transition probabilities matrices, given by the edges in the graph are
+
+\bigskip
+
+$
+    P_a = \kbordermatrix{
+    & 1 & 2a & 2b & 3 & 4 \\
+    1 & 0 & 0.5 & 0.5 & 0 & 0 \\
+    2a & 0 & 0 & 0 & 1 & 0 \\
+    2b & 0 & 0 & 0 & 0 & 1  \\
+    3 & 0 & 1 & 0 & 0 & 0 \\
+    4 & 0 & 0 & 1 & 0 & 0 \\
+  }
+$
+
+\bigskip
+
+$
+    P_b = \kbordermatrix{
+    & 1 & 2a & 2b & 3 & 4 \\
+    1 & 0 & 0.5 & 0.5 & 0 & 0 \\
+    2a & 1 & 0 & 0 & 0 & 0 \\
+    2b & 1 & 0 & 0 & 0 & 0  \\
+    3 & 0 & 1 & 0 & 0 & 0 \\
+    4 & 0 & 0 & 1 & 0 & 0 \\
+  }
+$
+
+\bigskip
+
+$
+    P_c = \kbordermatrix{
+    & 1 & 2a & 2b & 3 & 4 \\
+    1 & 0 & 0.5 & 0.5 & 0 & 0 \\
+    2a & 1 & 0 & 0 & 0 & 0 \\
+    2b & 1 & 0 & 0 & 0 & 0  \\
+    3 & 0 & 1 & 0 & 0 & 0 \\
+    4 & 0 & 0 & 1 & 0 & 0 \\
+  }
+$
+
+\bigskip
+
+The observation probabilities matrices, corresponding to the probability of an observation 
+given the current state and the previous action are
+
+\bigskip
+
+$
+    O_a = \kbordermatrix{
+    & 1 & 2 & 3 & 4 \\
+    1 & 0 & 0 & 0 & 0 \\
+    2a & 0 & 1 & 0 & 0 \\
+    2b & 0 & 1 & 0 & 0 \\
+    3 & 0 & 0 & 1 & 0 \\
+    4 & 0 & 0 & 0 & 1 \\
+  }
+$
+
+\bigskip
+
+$
+    O_b = \kbordermatrix{
+    & 1 & 2 & 3 & 4 \\
+    1 & 1 & 0 & 0 & 0 \\
+    2a & 0 & 1 & 0 & 0 \\
+    2b & 0 & 1 & 0 & 0 \\
+    3 & 0 & 0 & 0 & 0 \\
+    4 & 0 & 0 & 0 & 0 \\
+  }
+$
+
+\bigskip
+
+$
+    O_c = \kbordermatrix{
+    & 1 & 2 & 3 & 4 \\
+    1 & 1 & 0 & 0 & 0 \\
+    2a & 0 & 1 & 0 & 0 \\
+    2b & 0 & 1 & 0 & 0 \\
+    3 & 0 & 0 & 0 & 0 \\
+    4 & 0 & 0 & 0 & 0 \\
+  }
+$
+
+\bigskip
+
+Note how the probability of an observation that would occur in some states is 0, due to it being impossible to transition to that state, given that action.
+
+\medskip
+
+Now the only thing missing is the immediate cost function, which we can obtain from
+the costs indicated in the edges of the graph.
+
+\medskip
+
+The cost matrix for all actions is given by 
+$
+  C = \kbordermatrix{
+    & a & b & c \\
+    1 & 0 & 0 & 0 \\
+    2a & 0.5 & 1 & 0 \\
+    2b & 0.5 & 0 & 1 \\
+    3 & 0 & 0 & 0 \\
+    4 & 0 & 0 & 0 \\
+  }
+$
+
+\medskip
+
+\subsection{}
+
+\end{document}
