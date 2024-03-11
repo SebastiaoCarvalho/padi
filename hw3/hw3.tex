@@ -147,7 +147,7 @@ $
 
 Let's consider $\hat{b}_{t+1}$ as the update for the belief $b_t$ after taking action $a_t$ and before observing $z_{t+1}$. 
 
-We need to calculate $\hat{b}_{t+1} = b_t^T P_a$, for all actions $a \in \mathcal{A}$.
+We need to calculate $\hat{b}_{t+1} = b_t P_a$, for all actions $a \in \mathcal{A}$.
 
 \bigskip
 
@@ -156,13 +156,9 @@ Considering we choose the action $a$ at the time-step $t$, we have the following
 \medskip
 
 $
-  \hat{b}_{t+1} = b_t^T P_a = 
+  \hat{b}_{t+1} = b_t P_a = 
   \begin{bmatrix}
-    0 \\
-    0.5 \\
-    0.5 \\
-    0 \\
-    0 \\
+    0 & 0.5 & 0.5 & 0 & 0
   \end{bmatrix}
   \begin{bmatrix}
     0 & 0.5 & 0.5 & 0 & 0 \\
@@ -182,13 +178,9 @@ Considering we choose the action $b$ at the time-step $t$, we have the following
 \medskip
 
 $
-  \hat{b}_{t+1} = b_t^T P_b = 
+  \hat{b}_{t+1} = b_t P_b = 
   \begin{bmatrix}
-    0 \\
-    0.5 \\
-    0.5 \\
-    0 \\
-    0 \\
+    0 & 0.5 & 0.5 & 0 & 0 \\
   \end{bmatrix}
   \begin{bmatrix}
     0 & 0.5 & 0.5 & 0 & 0 \\
@@ -208,13 +200,9 @@ Considering we choose the action $c$ at the time-step $t$, we have the following
 \medskip
 
 $
-  \hat{b}_{t+1} = b_t^T P_c = 
+  \hat{b}_{t+1} = b_t P_c = 
   \begin{bmatrix}
-    0 \\
-    0.5 \\
-    0.5 \\
-    0 \\
-    0 \\
+    0 & 0.5 & 0.5 & 0 & 0 \\
   \end{bmatrix}
   \begin{bmatrix}
     0 & 0.5 & 0.5 & 0 & 0 \\
