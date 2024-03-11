@@ -77,14 +77,14 @@ $
 \bigskip
 
 The observation probabilities matrices, corresponding to the probability of an observation 
-given the current state and the previous action are
+given the current state and the previous action, do not depend on the action selected, so
 
 \bigskip
 
 $
-    O_a = \kbordermatrix{
+    O_a = O_b = O_c = \kbordermatrix{
     & 1 & 2 & 3 & 4 \\
-    1 & 0 & 0 & 0 & 0 \\
+    1 & 1 & 0 & 0 & 0 \\
     2a & 0 & 1 & 0 & 0 \\
     2b & 0 & 1 & 0 & 0 \\
     3 & 0 & 0 & 1 & 0 \\
@@ -93,36 +93,6 @@ $
 $
 
 \bigskip
-
-$
-    O_b = \kbordermatrix{
-    & 1 & 2 & 3 & 4 \\
-    1 & 1 & 0 & 0 & 0 \\
-    2a & 0 & 1 & 0 & 0 \\
-    2b & 0 & 1 & 0 & 0 \\
-    3 & 0 & 0 & 0 & 0 \\
-    4 & 0 & 0 & 0 & 0 \\
-  }
-$
-
-\bigskip
-
-$
-    O_c = \kbordermatrix{
-    & 1 & 2 & 3 & 4 \\
-    1 & 1 & 0 & 0 & 0 \\
-    2a & 0 & 1 & 0 & 0 \\
-    2b & 0 & 1 & 0 & 0 \\
-    3 & 0 & 0 & 0 & 0 \\
-    4 & 0 & 0 & 0 & 0 \\
-  }
-$
-
-\bigskip
-
-Note how the probability of an observation that would occur in some states is 0, due to it being impossible to transition to that state, given that action.
-
-\medskip
 
 Now the only thing missing is the immediate cost function, which we can obtain from
 the costs indicated in the edges of the graph.
