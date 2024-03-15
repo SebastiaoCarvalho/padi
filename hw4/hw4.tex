@@ -1,0 +1,69 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,positioning}
+\renewcommand{\thesubsection}{\thesection \space \alph{subsection})}
+\DeclareMathOperator{\EX}{\mathbb{E}}% expected value
+\DeclareMathOperator{\JPI}{J^\pi} % J pi
+
+\title{Planing, Learning and Intelligent Decision Making - Homework 4}
+\author{99326 - Sebastião Carvalho, 99331 - Tiago Antunes}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\section{Question 1}
+
+\subsection{}
+
+To find the equilibrium points for the o.d.e (2), we need to solve the following equation:
+
+\medskip
+
+$\dot{J} = 0 \Leftrightarrow \EX_\pi[c_t + (\gamma - 1) J] = 0$
+$\Leftrightarrow \EX_\pi[c_t] + (\gamma - 1) \EX_\pi[J] = 0$
+
+\medskip
+
+Since $\EX_\pi[c_t] = c_\pi$, 
+
+\medskip
+
+$c_\pi = (1 - \gamma) \EX_\pi[J]$
+$\Leftrightarrow \EX_\pi[J] = \frac{c_\pi}{1 - \gamma}$
+
+\medskip
+
+Since $\EX_\pi[\JPI] = \JPI$, and $\JPI = \frac{c_\pi}{1 - \gamma}$, we have that $\EX_\pi[J] = \EX_\pi[\JPI] = \JPI$,
+so the equilibrium point is $\JPI$.
+
+\subsection{}
+
+$\dot{E_t} = \frac{d}{dt}  \frac{1}{2}  \left(J^{(t)} - \JPI \right)^2$
+
+$ = \frac{1}{2}  \frac{d}{dt}  \left(J^{(t)} - \JPI \right)^2$
+
+$ = \frac{1}{2}  2 \left(J^{(t)} - \JPI \right) \frac{d}{dt}  \left(J^{(t)} - \JPI \right)$
+
+$ = \left(J^{(t)} - \JPI \right) \dot{J}$
+
+$ = \left(J^{(t)} - \JPI \right) \EX_\pi[c_t + (\gamma - 1) J]$
+
+$ = \left(J^{(t)} - \JPI \right) (\EX_\pi[c_t + (\gamma - 1) J] - \dot{\JPI})$
+
+$ = \left(J^{(t)} - \JPI \right) (\EX_\pi[c_t + (\gamma - 1) J] - (c_\pi + (\gamma - 1) \JPI))$
+
+$ = \left(J^{(t)} - \JPI \right) (\EX_\pi[c_t] + (\gamma - 1) \EX_\pi[J] - c_\pi - (\gamma - 1) \JPI)$
+
+$ = \left(J^{(t)} - \JPI \right) (c_\pi +  (\gamma - 1) \EX_\pi[J] - c_\pi - (\gamma - 1) \JPI)$
+
+$ = (\gamma - 1) \left(J^{(t)} - \JPI \right) (\EX_\pi[J] - \JPI)$
+\subsection{}
+
+\end{document}
