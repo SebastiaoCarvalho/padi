@@ -66,4 +66,11 @@ $ = \left(J^{(t)} - \JPI \right) (c_\pi +  (\gamma - 1) \EX_\pi[J] - c_\pi - (\g
 $ = (\gamma - 1) \left(J^{(t)} - \JPI \right) (\EX_\pi[J] - \JPI)$
 \subsection{}
 
+The result obtained in (b) suggests that the energy is always decreasing as we move foward in time, unless $J^{(t)} = J^{\pi}$, 
+at which point the derivative is 0, meaning that the value will not change.
+Given its equation and that the energy is only 0 if $J^{(t)} = J^{\pi}$, we conclude that $J^{(t)}$ converges to $J^{\pi}$
+until they're equal, and then it will permanently stay equal.
+Knowing that in this case, the state $\mathcal{X} = \{x\}$, we can conclude that if the states are visited infinitely often, 
+the TD(0) algorithm converges to $J^{\pi}$, for any $\gamma \in [0, 1]$.
+
 \end{document}
