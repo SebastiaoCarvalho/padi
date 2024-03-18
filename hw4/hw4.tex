@@ -40,8 +40,16 @@ $\Leftrightarrow \EX_\pi[J] = \frac{c_\pi}{1 - \gamma}$
 
 \medskip
 
-Since $\EX_\pi[\JPI] = \JPI$, and $\JPI = \frac{c_\pi}{1 - \gamma}$, we have that $\EX_\pi[J] = \EX_\pi[\JPI] = \JPI$,
-so the equilibrium point is $\JPI$.
+Since $J$ doesn't depend on $\pi$, $\EX_\pi[J] = J$, and $\JPI = \frac{c_\pi}{1 - \gamma}$, we have that 
+
+\medskip
+
+$\EX_\pi[J] = \frac{c_\pi}{1 - \gamma}$
+$\Leftrightarrow J = \JPI$
+
+\medskip
+
+So the equilibrium point is $\JPI$, since it's the only point that satisfies the equation.
 
 \subsection{}
 
@@ -51,19 +59,34 @@ $ = \frac{1}{2}  \frac{d}{dt}  \left(J^{(t)} - \JPI \right)^2$
 
 $ = \frac{1}{2}  2 \left(J^{(t)} - \JPI \right) \frac{d}{dt}  \left(J^{(t)} - \JPI \right)$
 
-$ = \left(J^{(t)} - \JPI \right) \dot{J}$
+$ = \left(J^{(t)} - \JPI \right) \dot{J}^{(t)}$
 
-$ = \left(J^{(t)} - \JPI \right) \EX_\pi[c_t + (\gamma - 1) J]$
+$ = \left(J^{(t)} - \JPI \right) \EX_\pi[c_t + (\gamma - 1) J^{(t)}]$
 
-$ = \left(J^{(t)} - \JPI \right) (\EX_\pi[c_t + (\gamma - 1) J] - \dot{\JPI})$
+\medskip
 
-$ = \left(J^{(t)} - \JPI \right) (\EX_\pi[c_t + (\gamma - 1) J] - (c_\pi + (\gamma - 1) \JPI))$
+Since $\JPI$ is an equilibrium point, $\dot{J}^\pi$ is 0, and we have that
 
-$ = \left(J^{(t)} - \JPI \right) (\EX_\pi[c_t] + (\gamma - 1) \EX_\pi[J] - c_\pi - (\gamma - 1) \JPI)$
+\medskip
 
-$ = \left(J^{(t)} - \JPI \right) (c_\pi +  (\gamma - 1) \EX_\pi[J] - c_\pi - (\gamma - 1) \JPI)$
+$ = \left(J^{(t)} - \JPI \right) (\EX_\pi[c_t + (\gamma - 1) J^{(t)}] - \dot{J}^\pi)$
 
-$ = (\gamma - 1) \left(J^{(t)} - \JPI \right) (\EX_\pi[J] - \JPI)$
+$ = \left(J^{(t)} - \JPI \right) (\EX_\pi[c_t + (\gamma - 1) J^{(t)}] - (c_\pi + (\gamma - 1) \JPI))$
+
+$ = \left(J^{(t)} - \JPI \right) (\EX_\pi[c_t] + (\gamma - 1) \EX_\pi[J^{(t)}] - c_\pi - (\gamma - 1) \JPI)$
+
+$ = \left(J^{(t)} - \JPI \right) (c_\pi +  (\gamma - 1) J^{(t)} - c_\pi - (\gamma - 1) \JPI)$
+
+$ = (\gamma - 1) \left(J^{(t)} - \JPI \right) (J^{(t)} - \JPI)$
+
+$ = (\gamma - 1) \left(J^{(t)} - \JPI \right)^2$
+
+\bigskip
+
+Since $\left(J^{(t)} - \JPI \right)^2$ is always positive, and $\gamma - 1$ is always negative, 
+we have that $\dot{E_t}$ is always negative, and a negative derivative means that the function is decreasing. 
+
+Hence, the energy is always decreasing as we move foward in time.
 \subsection{}
 
 The result obtained in (b) suggests that the energy is always decreasing as we move foward in time, unless $J^{(t)} = J^{\pi}$, 
